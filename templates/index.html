@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<!--From https://codepen.io/frytyler/pen/EGdtg-->
+<head>
+    <meta charset="UTF-8">
+
+    <title>ML API</title>
+    <link rel="stylesheet" href="static/style.css">
+    <!--    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">-->
+
+</head>
+
+<body>
+
+
+<div class="login">
+
+    <h1>COVID-19 predication</h1>
+
+
+    <h1 class="mt-5">Upload an Image</h1>
+
+    {% if prediction_text_1 %}
+
+    <form action="{{ url_for('again')}}" method="post" enctype="multipart/form-data">
+        <h2 style="color: blue"> {{prediction_text_1}} </h2>
+        <h2 style="color: blue"> {{prediction_text_2}} </h2>
+        <button type="submit" class="btn btn-primary btn-block btn-large mt-3">Again</button>
+    </form>
+
+    {% else %}
+
+    <form action="{{ url_for('predict')}}" method="post" enctype="multipart/form-data">
+        <input type="file" id="img" name="img" required="required" class="form-control mt-3"/>
+        <button type="submit" class="btn btn-primary btn-block btn-large mt-3">Predict</button>
+    </form>
+
+    {% endif %}
+
+    <br>
+    <br>
+
+
+</div>
+
+
+</body>
+</html>
